@@ -3,6 +3,8 @@ import 'package:brew_crew/screens/authentication/authenticate.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'home/home.dart';
+
 class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -10,6 +12,10 @@ class Wrapper extends StatelessWidget {
     // Return after Home or Authenticate
 
     print(user);
-    return Authenticate();
+    if (user == null) {
+      return Authenticate();
+    } else {
+      return Home();
+    }
   }
 }
