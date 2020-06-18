@@ -3,18 +3,19 @@ import 'package:brew_crew/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
   @override
-  _SignInState createState() => _SignInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
 
   //text states
   final _formKey = GlobalKey<FormState>();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+  TextEditingController _cpasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
           backgroundColor: darkBrown,
           elevation: 0.0,
-          title: Text("Sign in to Brew Crew")),
+          title: Text("Register in to Brew Crew")),
       body: SingleChildScrollView(
         reverse: true,
         child: Container(
@@ -34,8 +35,6 @@ class _SignInState extends State<SignIn> {
                 SizedBox(
                   height: 20.0,
                 ),
-               
-                
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Material(
@@ -98,7 +97,34 @@ class _SignInState extends State<SignIn> {
                     ),
                   ),
                 ),
-                
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Material(
+                    borderRadius: BorderRadius.circular(5.0),
+                    color: Colors.white.withOpacity(0.8),
+                    elevation: 0.0,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12.0, vertical: 4.0),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                            hintText: "Confirm Password",
+                            icon: Icon(Icons.lock),
+                            border: InputBorder.none,
+                            isDense: true),
+                        controller: _passwordController,
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return "Please confirm your password";
+                          } else if (value != _passwordController.text) {
+                            return "Passwords doesn't match";
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                  ),
+                ),
                 SizedBox(
                   height: 20.0,
                 ),
@@ -106,9 +132,7 @@ class _SignInState extends State<SignIn> {
                   width: double.infinity,
                   child: RaisedButton(
                     onPressed: () {
-                      if (_formKey.currentState.validate()) {
-                        
-                      }
+                      if (_formKey.currentState.validate()) {}
                     },
                     color: darkBtnBrown,
                     child: Text(
