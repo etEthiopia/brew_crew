@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class Register extends StatefulWidget {
+  final Function toggleView;
+  Register({this.toggleView});
+
   @override
   _RegisterState createState() => _RegisterState();
 }
@@ -137,6 +140,22 @@ class _RegisterState extends State<Register> {
                     color: darkBtnBrown,
                     child: Text(
                       "Sign In",
+                      style: TextStyle(color: whiteBrown),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: RaisedButton(
+                    onPressed: () {
+                      widget.toggleView();
+                    },
+                    color: primaryBtnBrown,
+                    child: Text(
+                      "Log In",
                       style: TextStyle(color: whiteBrown),
                     ),
                   ),

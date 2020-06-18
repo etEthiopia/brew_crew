@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class SignIn extends StatefulWidget {
+  final Function toggleView;
+  SignIn({this.toggleView});
+
   @override
   _SignInState createState() => _SignInState();
 }
@@ -34,8 +37,6 @@ class _SignInState extends State<SignIn> {
                 SizedBox(
                   height: 20.0,
                 ),
-               
-                
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Material(
@@ -98,7 +99,6 @@ class _SignInState extends State<SignIn> {
                     ),
                   ),
                 ),
-                
                 SizedBox(
                   height: 20.0,
                 ),
@@ -106,13 +106,27 @@ class _SignInState extends State<SignIn> {
                   width: double.infinity,
                   child: RaisedButton(
                     onPressed: () {
-                      if (_formKey.currentState.validate()) {
-                        
-                      }
+                      if (_formKey.currentState.validate()) {}
                     },
                     color: darkBtnBrown,
                     child: Text(
                       "Sign In",
+                      style: TextStyle(color: whiteBrown),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: RaisedButton(
+                    onPressed: () {
+                      widget.toggleView();
+                    },
+                    color: primaryBtnBrown,
+                    child: Text(
+                      "Create an Account",
                       style: TextStyle(color: whiteBrown),
                     ),
                   ),
